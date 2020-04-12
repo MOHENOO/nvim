@@ -37,18 +37,28 @@ endfunction
 nmap <leader>z :call Zoom()<CR>
 
 "Anyjump
-nnoremap <silent> <leader>j :AnyJump <CR>
-xnoremap <silent> <leader>j :AnyJumpVisual <CR>
-nnoremap <silent> <leader>ab :AnyJumpBack <CR>
-nnoremap <silent> <leader>al :AnyJumpListResults <CR>
+nnoremap <silent> <leader>jj :AnyJump <CR>
+xnoremap <silent> <leader>jj :AnyJumpVisual <CR>
+nnoremap <silent> <leader>jb :AnyJumpBack <CR>
+nnoremap <silent> <leader>jl :AnyJumpListResults <CR>
 
 "coc-explorer
-:nmap <leader>e :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer<CR>
+
+"coc-yank
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+
+"coc-translator
+"" popup
+nmap <LocalLeader>tp <Plug>(coc-translator-p)
+vmap <LocalLeader>tp <Plug>(coc-translator-pv)
+"" echo
+nmap <LocalLeader>te <Plug>(coc-translator-e)
 
 "vim-clap
-:nmap <leader>p :Clap files<CR>
-:nmap <Leader>: :Clap command<CR>
-:nmap <Leader>f :Clap grep<CR>
+:nmap <leader>cf :Clap files<CR>
+:nmap <Leader>cc :Clap command<CR>
+:nmap <Leader>cg :Clap grep<CR>
 
 "tabbar
 " nmap <leader>t :TagbarToggle<CR>
@@ -57,13 +67,13 @@ nmap <leader>t :Vista!!<CR>
 
 "vimux
 " Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
+map <LocalLeader>vp :VimuxPromptCommand<CR>
 " Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+map <LocalLeader>vl :VimuxRunLastCommand<CR>
 " Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
+map <LocalLeader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
+map <LocalLeader>vz :VimuxZoomRunner<CR>
 
 "whichkey
 nnoremap <leader> :<C-U>WhichKey '<Space>'<CR>
@@ -98,30 +108,38 @@ function! s:show_documentation()
 endfunction
 
 " Remap for rename current word
-nmap <LocalLeader>rn <Plug>(coc-rename)
+nmap <Leader>r <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <LocalLeader>f  <Plug>(coc-format-selected)
-nmap <LocalLeader>f  <Plug>(coc-format-selected)
+xmap <Leader>f  <Plug>(coc-format-selected)
+nmap <Leader>f  <Plug>(coc-format-selected)
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
-nmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
+" xmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
+" nmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-nmap <LocalLeader>ac  <Plug>(coc-codeaction)
+" nmap <LocalLeader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
-nmap <LocalLeader>qf  <Plug>(coc-fix-current)
+nmap <Leader>q  <Plug>(coc-fix-current)
 
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <LocalLeader>d <Plug>(coc-range-select)
-xmap <silent> <LocalLeader>d <Plug>(coc-range-select)
+"coc-action
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <Leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <Leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@<CR>
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver
+" nmap <silent> <LocalLeader>d <Plug>(coc-range-select)
+" xmap <silent> <LocalLeader>d <Plug>(coc-range-select)
 
 " CocList
 " Show all diagnostics
-nnoremap <silent> <LocalLeader>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <Leader>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <LocalLeader>e  :<C-u>CocList marketplace<cr>
+nnoremap <silent> <LocalLeader>m  :<C-u>CocList marketplace<cr>
 " Show commands
 nnoremap <silent> <LocalLeader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
@@ -135,6 +153,7 @@ nnoremap <silent> <LocalLeader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <LocalLeader>p  :<C-u>CocListResume<CR>
 nnoremap <silent> <LocalLeader>g  :<C-u>CocList --normal gstatus<CR>
+
 " grep word under cursor
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 
@@ -145,7 +164,7 @@ function! s:GrepArgs(...)
 endfunction
 
 " Keymapping for grep word under cursor with interactive mode
-nnoremap <silent> <LocalLeader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+" nnoremap <silent> <LocalLeader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 
 " use <C-j> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort

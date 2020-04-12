@@ -3,6 +3,7 @@
     "diagnostic.warningSign": "--",
     "diagnostic.errorSign": ">>",
     "python.formatting.provider": "yapf",
+    "python.jediEnabled": false,
     "suggest.timeout": 500,
     "suggest.noselect": false,
     "suggest.autoTrigger": "always",
@@ -26,6 +27,7 @@
     ],
     "imselect.enableStatusItem": true,
     "imselect.defaultInput": "com.apple.keylayout.US",
-    "imselect.enableFloating": false,
-    "git.enableGutters": true
+    "imselect.enableFloating": true,
+    "git.enableGutters": true,
+    "clock.enable": true
 }

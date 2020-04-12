@@ -194,7 +194,7 @@ Plug 'mbbill/undotree'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " Terminal
 Plug 'wincent/terminus'
-" Plug 'voldikss/vim-floaterm'
+Plug 'voldikss/vim-floaterm'
 " Vimwiki
 " Plug 'vimwiki/vimwiki'
 " Task like vscode
