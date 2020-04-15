@@ -49,4 +49,4 @@ autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-extensions
-let g:coc_global_extensions = ["coc-yank","coc-yaml","coc-word","coc-translator","coc-todolist","coc-template","coc-tasks","coc-tag","coc-syntax","coc-sql","coc-spell-checker","coc-snippets","coc-sh","coc-python","coc-project","coc-prettier","coc-pairs","coc-markdownlint","coc-json","coc-lists","coc-imselect","coc-highlight","coc-go","coc-gitignore","coc-git","coc-explorer","coc-emoji","coc-docker","coc-dictionary","coc-clock","coc-calc"]
+let g:coc_global_extensions = ["coc-yank","coc-yaml","coc-word","coc-translator","coc-todolist","coc-template","coc-tasks","coc-tag","coc-syntax","coc-sql","coc-spell-checker","coc-snippets","coc-sh","coc-python","coc-project","coc-prettier","coc-pairs","coc-markdownlint","coc-json","coc-lists","coc-imselect","coc-highlight","coc-go","coc-gitignore","coc-git","coc-explorer","coc-emoji","coc-docker","coc-dictionary","coc-clock","coc-calc","coc-actions","coc-marketplace"]
