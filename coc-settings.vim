@@ -35,7 +35,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 
