@@ -7,25 +7,61 @@ function! NearestMethodOrFunction() abort
   return get(b:, 'vista_nearest_method_or_function', '')
 endfunction
 
-let g:lightline = {
-    \ 'colorscheme': 'onedark',
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status',
+let g:lightline = {}
+let g:lightline.colorscheme = 'nord'
+let g:lightline.component_expand = {
+    \   'gitdiff': 'lightline#gitdiff#get',
+    \   'buffers': 'lightline#bufferline#buffers',
+    \   'asyncrun_status': 'lightline#asyncrun#status'
+    \ }
+let g:lightline.component_type = {
+    \   'gitdiff': 'middle',
+    \   'buffers': 'tabsel'
+    \ }
+let g:lightline.component_function = {
     \   'currentfuction': 'CocCurrentFunction',
     \   'gitbranch': 'fugitive#head',
     \   'method': 'NearestMethodOrFunction',
-    \ },
-    \ 'active': {
-    \   'left':  [[ 'mode', 'paste' ],
-    \             [ 'gitbranch','cocstatus', 'currentfuction','readonly', 'filename', 'modified','method' ] ],
-    \ },
     \ }
+let g:lightline.tabline = {
+    \   'left': [['buffers']],
+    \   'right': [['close']]
+    \ }
+
+" Add the components to the lightline:
+let g:lightline.active = {
+    \   'left': [['mode', 'paste'],
+    \            ['coc_errors', 'coc_warnings', 'coc_ok' ],
+    \            ['coc_status'],
+    \            ['currentfuction','method'],
+    \            ['gitbranch','readonly','filename','modified'],
+    \            ['gitdiff']],
+    \   'right': [['lineinfo'],['percent'],
+    \             ['fileformat','fileencoding','filetype'],
+    \             ['asyncrun_status']]
+    \ }
+
+call lightline#coc#register()
+autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+" let g:lightline = {
+"     \ 'active': {
+"     \   'left':  [[ 'mode', 'paste','coc_errors','coc_warnings','coc_ok'],
+"     \             [ 'gitbranch', 'coc_status','currentfuction','readonly', 'filename', 'modified','method' ]],
+"     \ }
+"     \ }
+
+" \             [ 'gitbranch','cocstatus', 'currentfuction','readonly', 'filename', 'modified','method' ] ],
 
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 "Terminus
 let g:TerminusMouse = 0
+
+"dadbod
+let g:dbs = {
+\  'redis': 'mysql://root:kingsoft@10.111.0.21:9306/trove'
+\ }
 
 "Easymotion
 nmap s <Plug>(easymotion-s2)
@@ -74,6 +110,13 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
+"python-syntax
+let g:python_highlight_all = 1
+let g:python_version_2 = 1
+
+"vim-compiler-python
+let g:python_compiler_fixqflist = 1
+
 " vimspector
 let g:vimspector_enable_mappings = 'HUMAN'
 " packadd! vimspector
@@ -106,7 +149,7 @@ let g:vista_executive_for = {
     \ 'vimwiki': 'markdown',
     \ 'markdown': 'toc',
     \ 'go': 'coc',
-    \ 'python': 'coc',
+    \ 'python': 'ctags',
     \ }
 
 " Declare the command including the executable and options used to generate ctags output
@@ -129,6 +172,10 @@ let g:vista#renderer#enable_icon = 1
 " \   "function": "\uf794",
 " \   "variable": "\uf71b",
 " \  }
+"
+
+"dashboard
+let g:dashboard_default_executive ='clap'
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -138,9 +185,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Make sure you use single quotes
 " UI
 "" StartWindow
-Plug 'mhinz/vim-startify'
+Plug 'hardcoreplayers/dashboard-nvim'
 "" Theme
 Plug 'itchyny/lightline.vim'
+Plug 'josa42/vim-lightline-coc'
+Plug 'niklaas/lightline-gitdiff'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'albertomontesg/lightline-asyncrun'
 Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'liuchengxu/space-vim-theme'
@@ -153,6 +204,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 "" Other
 Plug 'ryanoasis/vim-devicons'
 Plug 'liuchengxu/vista.vim'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'yggdroot/indentline'
 Plug 'luochen1990/rainbow'
@@ -169,6 +221,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go'
 Plug 'wellle/tmux-complete.vim'
+" Highlight
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-python/python-syntax'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'aliev/vim-compiler-python'
 " Debug
 Plug 'puremourning/vimspector'
 " Search
@@ -192,8 +249,12 @@ Plug 'mg979/vim-visual-multi'
 Plug 'mbbill/undotree'
 " Whichkey
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+"database
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
 " Terminal
 Plug 'wincent/terminus'
+Plug 'airblade/vim-rooter'
 Plug 'voldikss/vim-floaterm'
 " Vimwiki
 " Plug 'vimwiki/vimwiki'

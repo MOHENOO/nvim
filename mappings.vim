@@ -56,9 +56,25 @@ vmap <LocalLeader>tp <Plug>(coc-translator-pv)
 nmap <LocalLeader>te <Plug>(coc-translator-e)
 
 "vim-clap
-:nmap <leader>cf :Clap files<CR>
-:nmap <Leader>cc :Clap command<CR>
-:nmap <Leader>cg :Clap grep<CR>
+nmap <leader>cf :Clap history Clap files ++finder=rg --ignore --hidden --files<CR>
+nmap <Leader>cc :Clap colors<CR>
+nmap <Leader>cg :Clap grep2<CR>
+nmap <Leader>cb :Clap marks<CR>
+nmap <Leader>ch :Clap history<CR>
+nmap <Leader>ct :Clap tags<CR>
+nmap <Leader>cj :Clap jumps<CR>
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+
+"dashboard
+let g:dashboard_custom_shortcut={
+  \ 'last_session'       : 'SPC s l',
+  \ 'find_history'       : 'SPC c h',
+  \ 'find_file'          : 'SPC c f',
+  \ 'change_colorscheme' : 'SPC c c',
+  \ 'find_word'          : 'SPC c g',
+  \ 'book_marks'         : 'SPC c b',
+  \ }
 
 "tabbar
 " nmap <leader>t :TagbarToggle<CR>

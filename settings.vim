@@ -1,6 +1,6 @@
 "##################### UI #####################
 "主题
-colorscheme onedark
+colorscheme nord
 "背景
 set background=dark
 "彩色(Neovim 0.4.3)
@@ -47,7 +47,7 @@ set smartcase
 "启用折叠
 set foldenable
 "起始折叠等级
-set foldlevelstart=0
+set foldlevelstart=3
 "最大折叠等级
 set foldnestmax=10
 "折叠模式

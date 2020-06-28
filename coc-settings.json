@@ -3,7 +3,7 @@
     "diagnostic.warningSign": "--",
     "diagnostic.errorSign": ">>",
     "python.formatting.provider": "yapf",
-    "python.jediEnabled": false,
+    "python.jediEnabled": true,
     "suggest.timeout": 500,
     "suggest.noselect": false,
     "suggest.autoTrigger": "always",
@@ -68,5 +68,13 @@
     "cSpell.userWords": [
       "YANGJIA",
       "ksyun"
+    ],
+    "kite.enable": true,
+    "kite.enableSnippets": true,
+    "kite.pollingInterval": 5000,
+    "kite.startKiteEngineOnStartup": true,
+    "python.autoComplete.extraPaths": [
+      "${env:SPARK_HOME}/python",
+      "${env:SPARK_HOME}/python/pyspark"
     ]
 }
