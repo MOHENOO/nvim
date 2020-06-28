@@ -1,3 +1,11 @@
+"nord
+let g:nord_cursor_line_number_background = 1
+" let g:nord_uniform_status_lines = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
 "lightline
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -9,6 +17,7 @@ endfunction
 
 let g:lightline = {}
 let g:lightline.colorscheme = 'nord'
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {
     \   'gitdiff': 'lightline#gitdiff#get',
     \   'buffers': 'lightline#bufferline#buffers',
@@ -23,18 +32,13 @@ let g:lightline.component_function = {
     \   'gitbranch': 'fugitive#head',
     \   'method': 'NearestMethodOrFunction',
     \ }
-let g:lightline.tabline = {
-    \   'left': [['buffers']],
-    \   'right': [['close']]
-    \ }
-
 " Add the components to the lightline:
 let g:lightline.active = {
-    \   'left': [['mode', 'paste'],
+    \   'left': [['mode','buffers', 'paste'],
     \            ['coc_errors', 'coc_warnings', 'coc_ok' ],
     \            ['coc_status'],
     \            ['currentfuction','method'],
-    \            ['gitbranch','readonly','filename','modified'],
+    \            ['gitbranch','readonly','modified'],
     \            ['gitdiff']],
     \   'right': [['lineinfo'],['percent'],
     \             ['fileformat','fileencoding','filetype'],
@@ -43,6 +47,12 @@ let g:lightline.active = {
 
 call lightline#coc#register()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
+" lightline-bufferline
+let g:lightline#bufferline#filename_modifier = ':t'
+" let g:lightline#bufferline#show_number  = 1
+" let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#enable_devicons = 1
+" let g:lightline#bufferline#unnamed      = '[No Name]'
 " let g:lightline = {
 "     \ 'active': {
 "     \   'left':  [[ 'mode', 'paste','coc_errors','coc_warnings','coc_ok'],

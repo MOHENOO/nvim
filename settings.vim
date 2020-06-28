@@ -5,6 +5,8 @@ colorscheme nord
 set background=dark
 "彩色(Neovim 0.4.3)
 set termguicolors
+" tabline
+set showtabline=2
 "显示标尺
 set cursorline
 "刷新间隔时间
