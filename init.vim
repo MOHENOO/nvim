@@ -9,6 +9,8 @@ if !filereadable(plug)
     !command curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
+" root-dir
+autocmd FileType python let b:coc_root_patterns = ['virtualenv']
 " Plugs and Plugs's setting without coc
 source $HOME/.config/nvim/plugins.vim
 " All keymap

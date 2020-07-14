@@ -1,80 +1,51 @@
 {
-    "explorer.icon.enableNerdfont": true,
-    "diagnostic.warningSign": "--",
-    "diagnostic.errorSign": ">>",
-    "python.formatting.provider": "yapf",
-    "python.jediEnabled": true,
-    "suggest.timeout": 500,
-    "suggest.noselect": false,
-    "suggest.autoTrigger": "always",
-    "suggest.enablePreview": true,
-    "suggest.triggerAfterInsertEnter": true,
-    "suggest.minTriggerInputLength": 2,
-    "suggest.acceptSuggestionOnCommitCharacter": true,
-    "suggest.snippetIndicator": "►",
-    "go.goplsOptions": {
-        "completeUnimported": true,
-        "completionDocumentation": true,
-        "deepCompletion": true,
-        "fuzzyMatching": true,
-        "hoverKind": "SynopsisDocumentation",
-        "staticcheck": true,
-        "usePlaceholders": true
-    },
-    "snippets.ultisnips.directories": [
-        "UltiSnips",
-        "gosnippets/UltiSnips"
-    ],
-    "imselect.enableStatusItem": true,
-    "imselect.defaultInput": "com.apple.keylayout.US",
-    "imselect.enableFloating": true,
-    "git.enableGutters": true,
-    "cSpell.enabledLanguageIds": [
-        "vim",
-        "asciidoc",
-        "c",
-        "cpp",
-        "csharp",
-        "css",
-        "git-commit",
-        "go",
-        "handlebars",
-        "haskell",
-        "html",
-        "jade",
-        "java",
-        "javascript",
-        "javascriptreact",
-        "json",
-        "jsonc",
-        "latex",
-        "less",
-        "markdown",
-        "php",
-        "plaintext",
-        "python",
-        "pug",
-        "restructuredtext",
-        "rust",
-        "scala",
-        "scss",
-        "text",
-        "typescript",
-        "typescriptreact",
-        "yaml",
-        "yml"
-    ],
-    "cSpell.allowCompoundWords": true,
-    "cSpell.userWords": [
-      "YANGJIA",
-      "ksyun"
-    ],
-    "kite.enable": true,
-    "kite.enableSnippets": true,
-    "kite.pollingInterval": 5000,
-    "kite.startKiteEngineOnStartup": true,
-    "python.autoComplete.extraPaths": [
-      "${env:SPARK_HOME}/python",
-      "${env:SPARK_HOME}/python/pyspark"
-    ]
+  // "diagnostic
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextPrefix": " # ",
+  "diagnostic.checkCurrentLine": true,
+  // "diagnostic.messageTarget": "echo",
+  // suggest
+  "suggest.timeout": 5000,
+  "suggest.noselect": false,
+  "suggest.snippetIndicator": "►",
+  // snippets
+  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  // imselect
+  "imselect.enableStatusItem": false,
+  "imselect.defaultInput": "com.apple.keylayout.US",
+  "imselect.enableFloating": false,
+  // explorer
+  "explorer.icon.enableNerdfont": true,
+  // project
+  "project.rootPatterns": [
+      ".git",
+      "virtualenv"
+  ],
+  // git
+  "git.enableGutters": true,
+  // cSpell
+  "cSpell.enabled": false,
+  "cSpell.allowCompoundWords": true,
+  // python
+  "python.formatting.provider": "yapf",
+  // only use pyright as lint
+  "python.linting.enabled": false,
+  "python.jediEnabled": true,
+  // without limit jedi
+  "python.jediMemoryLimit": -1,
+  // pyright just use pyright as lint
+  "pyright.disableLanguageServices": true,
+  "pyright.typeCheckingMode": "basic",
+  "pyright.useLibraryCodeForTypes": true,
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  // go
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "completionDocumentation": true,
+    "deepCompletion": true,
+    "matcher": "fuzzy",
+    "hoverKind": "SynopsisDocumentation",
+    "staticcheck": true,
+    "usePlaceholders": true
+  }
 }

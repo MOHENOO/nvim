@@ -20,6 +20,8 @@ set wildmenu
 set wildmode=full
 "显示行号
 set number
+"相对行号
+set relativenumber
 "显示括号配对情况
 set showmatch
 "自动完成文件名
@@ -99,3 +101,7 @@ set autowrite
 set splitright
 "上下分屏时,新建分屏在下方
 set splitbelow
+
+
+" ##################### Clipboard #####################
+set clipboard=unnamed

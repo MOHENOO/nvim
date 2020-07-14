@@ -4,9 +4,11 @@
       "adapter": "vscode-go",
       "configuration": {
         "request": "launch",
-        "program": "${fileDirname}",
+        "program": "${workspaceRoot}/main.go",
         "mode": "debug",
-        "dlvToolPath": "$HOME/Development/go/bin/dlv"
+        "dlvToolPath": "$HOME/Development/go/bin/dlv",
+        "trace": true,
+        "env": { "GO111MODULE": "on" }
       }
     }
   }

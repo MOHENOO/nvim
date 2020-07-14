@@ -1,17 +1,82 @@
 {
   "configurations": {
-    "<name>: Launch": {
+    // This is a comment.
+    "run legacy vscode-python": {
+      "adapter": "vscode-python", /* coment goes here too */
+      "configuration": {
+        "request": "launch",
+        "type": "python",
+        "cwd": "${workspaceRoot}",
+        "program": "${file}",
+        "stopOnEntry": true,
+        "console": "integratedTerminal"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "",
+          "userUnhandled": ""
+        }
+      }
+    },
+    "attach": {
+      "adapter": "multi-session",
+      "configuration": {
+        "request": "attach"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "",
+          "userUnhandled": ""
+        }
+      }
+    },
+    "run": {
       "adapter": "debugpy",
       "configuration": {
-        "name": "<name>: Launch",
-        "type": "python",
         "request": "launch",
-        "cwd": "${cwd}",
-        "python": "/Users/mohenoo/opt/anaconda2/envs/trove/bin/python",
-        "stopOnEntry": true,
-        "console": "externalTerminal",
-        "debugOptions": [],
-        "program": "${file}"
+        "type": "python",
+        "cwd": "${workspaceRoot}",
+        "program": "${file}",
+        "stopOnEntry": false,
+        "console": "integratedTerminal"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "",
+          "userUnhandled": ""
+        }
+      }
+    },
+    "run - main.py": {
+      "adapter": "debugpy",
+      "configuration": {
+        "request": "launch",
+        "type": "python",
+        "cwd": "${workspaceRoot}",
+        "program": "${workspaceRoot}/main.py",
+        "stopOnEntry": false,
+        "console": "integratedTerminal"
+      },
+      "breakpoints": {
+        "exception": {
+          "raised": "N",
+          "uncaught": "",
+          "userUnhandled": ""
+        }
+      }
+    },
+    "run - exception question": {
+      "adapter": "debugpy",
+      "configuration": {
+        "request": "launch",
+        "type": "python",
+        "cwd": "${workspaceRoot}",
+        "program": "${file}",
+        "stopOnEntry": false,
+        "console": "integratedTerminal"
       }
     }
   }

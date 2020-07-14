@@ -94,7 +94,7 @@ let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_referrers_mode = 'gopls'
 let g:go_metalinter_autosave = 1
-" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
 let g:go_auto_type_info = 1
 let g:go_doc_max_height = 50
@@ -214,7 +214,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 "" Other
 Plug 'ryanoasis/vim-devicons'
 Plug 'liuchengxu/vista.vim'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'yggdroot/indentline'
 Plug 'luochen1990/rainbow'
@@ -236,6 +236,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-python/python-syntax'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'aliev/vim-compiler-python'
+Plug 'kevinoid/vim-jsonc'
+Plug 'kshenoy/vim-signature'
 " Debug
 Plug 'puremourning/vimspector'
 " Search
@@ -264,7 +266,7 @@ Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 " Terminal
 Plug 'wincent/terminus'
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 Plug 'voldikss/vim-floaterm'
 " Vimwiki
 " Plug 'vimwiki/vimwiki'

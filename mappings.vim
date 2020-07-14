@@ -56,10 +56,11 @@ vmap <LocalLeader>tp <Plug>(coc-translator-pv)
 nmap <LocalLeader>te <Plug>(coc-translator-e)
 
 "vim-clap
-nmap <leader>cf :Clap history Clap files ++finder=rg --ignore --hidden --files<CR>
+nmap <leader>cf :Clap files ++finder=rg --ignore --hidden --files<CR>
 nmap <Leader>cc :Clap colors<CR>
 nmap <Leader>cg :Clap grep2<CR>
-nmap <Leader>cb :Clap marks<CR>
+nmap <Leader>cm :Clap marks<CR>
+nmap <Leader>cb :Clap buffers<CR>
 nmap <Leader>ch :Clap history<CR>
 nmap <Leader>ct :Clap tags<CR>
 nmap <Leader>cj :Clap jumps<CR>
@@ -73,7 +74,7 @@ let g:dashboard_custom_shortcut={
   \ 'find_file'          : 'SPC c f',
   \ 'change_colorscheme' : 'SPC c c',
   \ 'find_word'          : 'SPC c g',
-  \ 'book_marks'         : 'SPC c b',
+  \ 'book_marks'         : 'SPC c m',
   \ }
 
 "tabbar
@@ -179,39 +180,46 @@ function! s:GrepArgs(...)
   return join(list, "\n")
 endfunction
 
-" Keymapping for grep word under cursor with interactive mode
-" nnoremap <silent> <LocalLeader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
-
-" use <C-j> for trigger completion and navigate to the next complete item
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <silent><expr> <C-j>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<C-j>" :
-      \ coc#refresh() " use <c-space>for trigger completion
-inoremap <silent><expr> <c-space> coc#refresh()
-
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <C-l> pumvisible() ? "\<C-y>" : "\<C-g>u\<C-l>"
-inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-l>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" coc-snippets
-" Use <Tab> for both expand and jump (make expand higher priority.)
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-TAB>'
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-l>\<c-r>=coc#on_enter()\<C-l>"
+
+" coc-snippets use tab and s-tab
+" inoremap <silent><expr> <TAB>
+"      \ pumvisible() ? coc#_select_confirm() :
+"      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"      \ <SID>check_back_space() ? "\<TAB>" :
+"      \ coc#refresh()
+
+" let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_prev = '<S-TAB>'
