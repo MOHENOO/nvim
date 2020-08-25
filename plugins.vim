@@ -1,11 +1,11 @@
 "nord
-let g:nord_cursor_line_number_background = 1
-" let g:nord_uniform_status_lines = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_uniform_diff_background = 1
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_underline = 1
+" let g:nord_cursor_line_number_background = 1
+" " let g:nord_uniform_status_lines = 1
+" let g:nord_bold_vertical_split_line = 1
+" let g:nord_uniform_diff_background = 1
+" let g:nord_italic = 1
+" let g:nord_italic_comments = 1
+" let g:nord_underline = 1
 "lightline
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -16,7 +16,7 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 let g:lightline = {}
-let g:lightline.colorscheme = 'nord'
+let g:lightline.colorscheme = 'onedark'
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {
     \   'gitdiff': 'lightline#gitdiff#get',
@@ -89,6 +89,7 @@ let g:asyncrun_open = 6
 "vim-go
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
+let g:go_code_completion_enabled = 0
 let g:go_def_mapping_enabled = 0
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
@@ -96,6 +97,7 @@ let g:go_referrers_mode = 'gopls'
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
+let g:go_jump_to_error = 0
 let g:go_auto_type_info = 1
 let g:go_doc_max_height = 50
 let g:go_doc_popup_window = 1
@@ -238,6 +240,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'aliev/vim-compiler-python'
 Plug 'kevinoid/vim-jsonc'
 Plug 'kshenoy/vim-signature'
+Plug 'pearofducks/ansible-vim'
 " Debug
 Plug 'puremourning/vimspector'
 " Search

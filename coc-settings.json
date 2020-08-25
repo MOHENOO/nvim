@@ -3,7 +3,7 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextPrefix": " # ",
   "diagnostic.checkCurrentLine": true,
-  // "diagnostic.messageTarget": "echo",
+  "diagnostic.messageTarget": "echo",
   // suggest
   "suggest.timeout": 5000,
   "suggest.noselect": false,
@@ -17,14 +17,11 @@
   // explorer
   "explorer.icon.enableNerdfont": true,
   // project
-  "project.rootPatterns": [
-      ".git",
-      "virtualenv"
-  ],
+  "project.rootPatterns": [".git", "virtualenv"],
   // git
   "git.enableGutters": true,
   // cSpell
-  "cSpell.enabled": false,
+  "cSpell.enabled": true,
   "cSpell.allowCompoundWords": true,
   // python
   "python.formatting.provider": "yapf",
@@ -39,13 +36,35 @@
   "pyright.useLibraryCodeForTypes": true,
   "python.analysis.diagnosticMode": "openFilesOnly",
   // go
+  "go.goplsPath": "~/Development/go/bin/gopls",
   "go.goplsOptions": {
     "completeUnimported": true,
     "completionDocumentation": true,
     "deepCompletion": true,
-    "matcher": "fuzzy",
     "hoverKind": "SynopsisDocumentation",
     "staticcheck": true,
     "usePlaceholders": true
+  },
+  //rainbox-fart
+  "rainbow-fart.ffplay": "/usr/local/bin/ffplay",
+  "rainbow-fart.locale": ["jp"],
+  "rainbow-fart.disable-voice-packages": [],
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
   }
 }

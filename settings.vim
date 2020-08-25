@@ -1,6 +1,6 @@
 "##################### UI #####################
 "主题
-colorscheme nord
+colorscheme onedark
 "背景
 set background=dark
 "彩色(Neovim 0.4.3)
