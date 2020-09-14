@@ -75,6 +75,7 @@ let g:dashboard_custom_shortcut={
   \ 'change_colorscheme' : 'SPC c c',
   \ 'find_word'          : 'SPC c g',
   \ 'book_marks'         : 'SPC c m',
+  \ 'new_file'           : 'SPC c n',
   \ }
 
 "tabbar

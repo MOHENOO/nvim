@@ -36,7 +36,7 @@
   "pyright.useLibraryCodeForTypes": true,
   "python.analysis.diagnosticMode": "openFilesOnly",
   // go
-  "go.goplsPath": "~/Development/go/bin/gopls",
+  // "go.goplsPath": "~/Development/go/bin/gopls",
   "go.goplsOptions": {
     "completeUnimported": true,
     "completionDocumentation": true,

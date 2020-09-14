@@ -16,7 +16,7 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 let g:lightline = {}
-let g:lightline.colorscheme = 'onedark'
+let g:lightline.colorscheme = 'nord'
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {
     \   'gitdiff': 'lightline#gitdiff#get',
