@@ -1,11 +1,17 @@
 "nord
-" let g:nord_cursor_line_number_background = 1
-" " let g:nord_uniform_status_lines = 1
-" let g:nord_bold_vertical_split_line = 1
-" let g:nord_uniform_diff_background = 1
-" let g:nord_italic = 1
-" let g:nord_italic_comments = 1
-" let g:nord_underline = 1
+let g:nord_cursor_line_number_background = 1
+" let g:nord_uniform_status_lines = 1
+let g:nord_bold_vertical_split_line = 1
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
+let g:nord_bold = 1
+augroup nord-theme-overrides
+  autocmd!
+  " Use 'nord7' as foreground color for Vim comment titles.
+  autocmd ColorScheme nord highlight vimCommentTitle ctermfg=14 guifg=#8FBCBB
+augroup END
 "lightline
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -185,6 +191,10 @@ let g:vista#renderer#enable_icon = 1
 " \   "variable": "\uf71b",
 " \  }
 "
+"
+
+"fzf
+set rtp+=$HOME/.zinit/polaris/bin/fzf
 
 "dashboard
 let g:dashboard_default_executive ='clap'
@@ -245,7 +255,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'puremourning/vimspector'
 " Search
 Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim'
 Plug 'pechorin/any-jump.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
