@@ -42,8 +42,8 @@ xnoremap <silent> <leader>jj :AnyJumpVisual <CR>
 nnoremap <silent> <leader>jb :AnyJumpBack <CR>
 nnoremap <silent> <leader>jl :AnyJumpListResults <CR>
 
-"coc-explorer
-nmap <leader>e :CocCommand explorer<CR>
+"nerdtree
+nmap <leader>e :NERDTreeToggle<CR>
 
 "coc-yank
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
