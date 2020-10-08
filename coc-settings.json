@@ -9,7 +9,10 @@
   "suggest.noselect": false,
   "suggest.snippetIndicator": "►",
   // snippets
-  "snippets.ultisnips.directories": ["UltiSnips", "gosnippets/UltiSnips"],
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
   // imselect
   "imselect.enableStatusItem": false,
   "imselect.defaultInput": "com.apple.keylayout.US",
@@ -17,7 +20,10 @@
   // explorer
   "explorer.icon.enableNerdfont": true,
   // project
-  "project.rootPatterns": [".git", "virtualenv"],
+  "project.rootPatterns": [
+    ".git",
+    "virtualenv"
+  ],
   // git
   "git.enableGutters": true,
   // cSpell
@@ -47,12 +53,21 @@
   },
   //rainbox-fart
   "rainbow-fart.ffplay": "/usr/local/bin/ffplay",
-  "rainbow-fart.locale": ["jp"],
+  "rainbow-fart.locale": [
+    "jp"
+  ],
   "rainbow-fart.disable-voice-packages": [],
+  //coc-list
+  "list.source.files.defaultOptions": ["--number-select"],
   "languageserver": {
     "ccls": {
       "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ],
       "rootPatterns": [
         ".ccls",
         "compile_commands.json",

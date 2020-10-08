@@ -8,7 +8,7 @@ set termguicolors
 " tabline
 set showtabline=2
 "显示标尺
-set cursorline
+" set cursorline
 "刷新间隔时间
 set updatetime=300
 "Timeout

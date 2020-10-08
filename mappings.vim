@@ -1,3 +1,7 @@
+"Easymotion
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+
 "vim-easy-align
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -48,17 +52,25 @@ nmap <leader>e :NERDTreeToggle<CR>
 "coc-yank
 nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 
+"coc-task
+nnoremap <silent> <LocalLeader>a  :<C-u>CocList tasks<cr>
+
 "coc-translator
 "" popup
 nmap <LocalLeader>tp <Plug>(coc-translator-p)
 vmap <LocalLeader>tp <Plug>(coc-translator-pv)
 "" echo
 nmap <LocalLeader>te <Plug>(coc-translator-e)
+vmap <LocalLeader>te <Plug>(coc-translator-ev)
+""replace
+nmap <LocalLeader>tr <Plug>(coc-translator-r)
+vmap <LocalLeader>tr <Plug>(coc-translator-rv)
 
 "vim-clap
 nmap <leader>cf :Clap files ++finder=rg --ignore --hidden --files<CR>
 nmap <Leader>cc :Clap colors<CR>
-nmap <Leader>cg :Clap grep2<CR>
+nmap <Leader>cg :Clap grep2 ++query=<cword><CR>
+vmap <Leader>cg :Clap grep2 ++query=@visual<CR>
 nmap <Leader>cm :Clap marks<CR>
 nmap <Leader>cb :Clap buffers<CR>
 nmap <Leader>ch :Clap history<CR>
@@ -66,6 +78,9 @@ nmap <Leader>ct :Clap tags<CR>
 nmap <Leader>cj :Clap jumps<CR>
 nmap <Leader>ss :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
+nmap <Leader>cn :<C-u>DashboardNewFile<CR>
+nnoremap <silent> <Leader>cn :<C-u>DashboardNewFile<CR>
+
 
 "dashboard
 let g:dashboard_custom_shortcut={
@@ -128,26 +143,15 @@ endfunction
 " Remap for rename current word
 nmap <Leader>r <Plug>(coc-rename)
 
-" Remap for format selected region
-xmap <Leader>f  <Plug>(coc-format-selected)
-nmap <Leader>f  <Plug>(coc-format-selected)
-
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-" xmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
-" nmap <LocalLeader>a  <Plug>(coc-codeaction-selected)
+xmap <Leader>a  <Plug>(coc-codeaction-selected)
+nmap <Leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap for do codeAction of current line
-" nmap <LocalLeader>ac  <Plug>(coc-codeaction)
+nmap <Leader>ac  <Plug>(coc-codeaction)
+
 " Fix autofix problem of current line
 nmap <Leader>q  <Plug>(coc-fix-current)
-
-"coc-action
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <Leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <Leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@<CR>
 
 " Use <C-d> for select selections ranges, needs server support, like: coc-tsserver
 " nmap <silent> <LocalLeader>d <Plug>(coc-range-select)
@@ -161,9 +165,9 @@ nnoremap <silent> <LocalLeader>m  :<C-u>CocList marketplace<cr>
 " Show commands
 nnoremap <silent> <LocalLeader>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <LocalLeader>o  :<C-u>CocList outline<cr>
+" nnoremap <silent> <LocalLeader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <LocalLeader>s  :<C-u>CocList -I symbols<cr>
+" nnoremap <silent> <LocalLeader>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
 nnoremap <silent> <Localleader>j  :<C-u>CocNext<CR>
 " Do default action for previous item.

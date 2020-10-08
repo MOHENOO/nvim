@@ -1,7 +1,7 @@
 "nord
 let g:nord_cursor_line_number_background = 1
 " let g:nord_uniform_status_lines = 1
-let g:nord_bold_vertical_split_line = 1
+let g:nord_bold_vertical_split_line = 0
 let g:nord_uniform_diff_background = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
@@ -12,6 +12,7 @@ augroup nord-theme-overrides
   " Use 'nord7' as foreground color for Vim comment titles.
   autocmd ColorScheme nord highlight vimCommentTitle ctermfg=14 guifg=#8FBCBB
 augroup END
+
 "lightline
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -73,15 +74,6 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 "Terminus
 let g:TerminusMouse = 0
-
-"dadbod
-let g:dbs = {
-\  'redis': 'mysql://root:kingsoft@10.111.0.21:9306/trove'
-\ }
-
-"Easymotion
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
 
 "rainbow
 let g:rainbow_active = 1
@@ -147,6 +139,15 @@ let g:vimspector_enable_mappings = 'HUMAN'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_sidebar_width = 40
 let g:vista_echo_cursor_strategy = 'floating_win'
+function! NearestMethodOrFunction() abort
+  return get(b:, 'vista_nearest_method_or_function', '')
+endfunction
+
+" By default vista.vim never run if you don't call it explicitly.
+"
+" If you want to show the nearest function in your statusline automatically,
+" you can add the following line to your vimrc
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 "tmux-navigator
 " Write all buffers before navigating from Vim to tmux pane
@@ -198,11 +199,28 @@ set rtp+=$HOME/.zinit/polaris/bin/fzf
 
 "dashboard
 let g:dashboard_default_executive ='clap'
+" let g:dashboard_session_directory ='~/.cache/nvim/session'
+let g:indentLine_fileTypeExclude = ['dashboard']
+
+"vim-clap
+let g:clap_theme = 'nord'
 
 "nerdtree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"asynctasks
+function! s:run_tmux(opts)
+    " asyncrun has temporarily changed dir for you
+    " getcwd() in the runner function is the target directory defined in `-cwd=xxx`  
+    let cwd = getcwd()   
+    call VimuxRunCommand('cd ' . shellescape(cwd) . '; ' . a:opts.cmd)
+endfunction
+
+let g:asyncrun_runner = get(g:, 'asyncrun_runner', {})
+let g:asyncrun_runner.tmux = function('s:run_tmux')
+let g:asynctasks_term_pos = 'tmux'
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -262,7 +280,7 @@ Plug 'pearofducks/ansible-vim'
 Plug 'puremourning/vimspector'
 " Search
 Plug 'easymotion/vim-easymotion'
-Plug 'junegunn/fzf' 
+" Plug 'junegunn/fzf' 
 Plug 'junegunn/fzf.vim'
 Plug 'pechorin/any-jump.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
@@ -282,14 +300,13 @@ Plug 'mbbill/undotree'
 " Whichkey
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 "database
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
+" Plug 'tpope/vim-dadbod'
+" Plug 'kristijanhusak/vim-dadbod-ui'
 " Terminal
 Plug 'wincent/terminus'
 " Plug 'airblade/vim-rooter'
-Plug 'voldikss/vim-floaterm'
+" Plug 'voldikss/vim-floaterm'
 " Vimwiki
-" Plug 'vimwiki/vimwiki'
 " Task like vscode
 Plug 'skywind3000/asynctasks.vim'
 Plug 'skywind3000/asyncrun.vim'
