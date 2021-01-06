@@ -23,6 +23,7 @@ function! NearestMethodOrFunction() abort
 endfunction
 
 let g:lightline = {}
+" let g:lightline.colorscheme = 'nord'
 let g:lightline.colorscheme = 'nord'
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {
@@ -52,7 +53,7 @@ let g:lightline.active = {
     \             ['asyncrun_status']]
     \ }
 
-call lightline#coc#register()
+" call lightline#coc#register()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " lightline-bufferline
 let g:lightline#bufferline#filename_modifier = ':t'
@@ -195,7 +196,7 @@ let g:vista#renderer#enable_icon = 1
 "
 
 "fzf
-set rtp+=$HOME/.zinit/polaris/bin/fzf
+" set rtp+=$HOME/.fzf
 
 "dashboard
 let g:dashboard_default_executive ='clap'
@@ -281,7 +282,7 @@ Plug 'puremourning/vimspector'
 " Search
 Plug 'easymotion/vim-easymotion'
 " Plug 'junegunn/fzf' 
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'pechorin/any-jump.vim'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " Tmux
