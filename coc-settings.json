@@ -59,6 +59,7 @@
   "rainbow-fart.disable-voice-packages": [],
   //coc-list
   "list.source.files.defaultOptions": ["--number-select"],
+  "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer",
   "languageserver": {
     "ccls": {
       "command": "ccls",

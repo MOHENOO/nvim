@@ -24,7 +24,7 @@ endfunction
 
 let g:lightline = {}
 " let g:lightline.colorscheme = 'nord'
-let g:lightline.colorscheme = 'nord'
+let g:lightline.colorscheme = 'onedark'
 let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
 let g:lightline.component_expand = {
     \   'gitdiff': 'lightline#gitdiff#get',
@@ -53,22 +53,10 @@ let g:lightline.active = {
     \             ['asyncrun_status']]
     \ }
 
-" call lightline#coc#register()
 autocmd BufWritePost,TextChanged,TextChangedI * call lightline#update()
 " lightline-bufferline
 let g:lightline#bufferline#filename_modifier = ':t'
-" let g:lightline#bufferline#show_number  = 1
-" let g:lightline#bufferline#shorten_path = 0
 let g:lightline#bufferline#enable_devicons = 1
-" let g:lightline#bufferline#unnamed      = '[No Name]'
-" let g:lightline = {
-"     \ 'active': {
-"     \   'left':  [[ 'mode', 'paste','coc_errors','coc_warnings','coc_ok'],
-"     \             [ 'gitbranch', 'coc_status','currentfuction','readonly', 'filename', 'modified','method' ]],
-"     \ }
-"     \ }
-
-" \             [ 'gitbranch','cocstatus', 'currentfuction','readonly', 'filename', 'modified','method' ] ],
 
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
@@ -204,7 +192,7 @@ let g:dashboard_default_executive ='clap'
 let g:indentLine_fileTypeExclude = ['dashboard']
 
 "vim-clap
-let g:clap_theme = 'nord'
+let g:clap_theme = 'onedark'
 
 "nerdtree
 autocmd StdinReadPre * let s:std_in=1
@@ -256,7 +244,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'yggdroot/indentline'
 Plug 'luochen1990/rainbow'
-Plug 'mg979/vim-xtabline'
+" Plug 'mg979/vim-xtabline'
 " Format
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'

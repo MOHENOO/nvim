@@ -67,4 +67,4 @@ autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-extensions
-let g:coc_global_extensions = ["coc-yank","coc-yaml","coc-word","coc-translator","coc-python","coc-pyright","coc-tasks","coc-tag","coc-syntax","coc-snippets","coc-sh","coc-project","coc-pairs","coc-markdownlint","coc-json","coc-lists","coc-imselect","coc-highlight","coc-go","coc-gitignore","coc-git","coc-emoji","coc-docker","coc-dictionary","coc-calc","coc-marketplace","coc-rainbow-fart"]
+let g:coc_global_extensions = ["coc-yank","coc-yaml","coc-word","coc-translator","coc-python","coc-pyright","coc-tasks","coc-tag","coc-syntax","coc-snippets","coc-sh","coc-project","coc-pairs","coc-markdownlint","coc-json","coc-lists","coc-imselect","coc-highlight","coc-go","coc-gitignore","coc-git","coc-emoji","coc-docker","coc-dictionary","coc-calc","coc-marketplace","coc-rainbow-fart","coc-rust-analyzer"]

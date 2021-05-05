@@ -1,6 +1,6 @@
 "##################### UI #####################
 "主题
-colorscheme nord
+colorscheme onedark
 "背景
 set background=dark
 "彩色(Neovim 0.4.3)
@@ -70,6 +70,7 @@ set smartindent
 " 检测文件类型插件
 filetype plugin on
 filetype indent on
+set fileformats=unix
 "不换行
 set nowrap
 "移位操作长度
@@ -101,7 +102,6 @@ set autowrite
 set splitright
 "上下分屏时,新建分屏在下方
 set splitbelow
-
 
 " ##################### Clipboard #####################
 set clipboard=unnamed
