@@ -51,9 +51,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-autocmd FileType json syntax match Comment +\/\/.\+$+
-
 " root-dir
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'virtualenv']
 
@@ -62,9 +59,6 @@ autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeIm
 autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
 autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
 autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
-
-"coc-highlight
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 "coc-extensions
 let g:coc_global_extensions = ["coc-yank","coc-yaml","coc-word","coc-translator","coc-python","coc-pyright","coc-tasks","coc-tag","coc-syntax","coc-snippets","coc-sh","coc-project","coc-pairs","coc-markdownlint","coc-json","coc-lists","coc-imselect","coc-highlight","coc-go","coc-gitignore","coc-git","coc-emoji","coc-docker","coc-dictionary","coc-calc","coc-marketplace","coc-rainbow-fart","coc-rust-analyzer"]
