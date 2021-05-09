@@ -1,26 +1,112 @@
-"Easymotion
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-
-"vim-easy-align
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-"分屏移动按键映射
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 "插入模式jj映射Esc
 :imap jj <Esc>
 
 "leader键修改
 let mapleader = "\<Space>"
 let maplocalleader=","
-:map <SPACE> <leader>
+
+"whichkey
+let g:which_key_map = {}
+let g:which_key_map['name'] = 'which_key root'
+let g:which_key_map['w'] = {
+      \ 'name' : '+windows' ,
+      \ 'w' : ['<C-W>w'     , 'other-window']          ,
+      \ 'd' : ['<C-W>c'     , 'delete-window']         ,
+      \ '-' : ['<C-W>s'     , 'split-window-below']    ,
+      \ '|' : ['<C-W>v'     , 'split-window-right']    ,
+      \ 'o' :  ['only', 'close-all-windows-except-current'] ,
+      \ 'h' : ['<C-W>h'     , 'window-left']           ,
+      \ 'j' : ['<C-W>j'     , 'window-below']          ,
+      \ 'l' : ['<C-W>l'     , 'window-right']          ,
+      \ 'k' : ['<C-W>k'     , 'window-up']             ,
+      \ 'H' : ['<C-W>5<'    , 'expand-window-left']    ,
+      \ 'J' : [':resize +5'  , 'expand-window-below']   ,
+      \ 'L' : ['<C-W>5>'    , 'expand-window-right']   ,
+      \ 'K' : [':resize -5'  , 'expand-window-up']      ,
+      \ '=' : ['<C-W>='     , 'balance-window']        ,
+      \ 's' : ['<C-W>s'     , 'split-window-below']    ,
+      \ 'v' : ['<C-W>v'     , 'split-window-below']    ,
+      \ 'z' : ['Zoom()', 'zoom'],
+      \ '?' : ['Windows', 'windows']
+      \ }
+let g:which_key_map['b'] = {
+       \ 'name' : '+buffer' ,
+       \ '1' : ['b1'        , 'buffer 1']        ,
+       \ '2' : ['b2'        , 'buffer 2']        ,
+       \ 'b' : ['Buffers'   , 'buffer']      ,
+       \ 'd' : ['bd'        , 'delete-buffer']   ,
+       \ 'f' : ['bfirst'    , 'first-buffer']    ,
+       \ 'h' : ['Startify'  , 'home-buffer']     ,
+       \ 'l' : ['blast'     , 'last-buffer']     ,
+       \ 'n' : ['bnext'     , 'next-buffer']     ,
+       \ 'p' : ['bprevious' , 'previous-buffer'] ,
+       \ '?' : ['Buffers'   , 'buffer']      ,
+       \ }
+let g:which_key_map['s'] = {
+    \ 'name' : '+search',
+    \ 'a': ['Ag', 'ag'],
+    \ 'b': ['Buffers', 'buffers'],
+    \ 'c': ['Commands', 'command'],
+    \ 'C': ['Colors', 'colors'],
+    \ 'f': ['Files', 'files'],
+    \ 'F': ['GFiles', 'project-files'],
+    \ 'g': ['BCommits', 'git-commit'],
+    \ 'G': ['Commits', 'project-commit'],
+    \ 'h': ['History:', 'history'],
+    \ 'm': ['Marks', 'marks'],
+    \ 'M': ['Maps', 'maps'],
+    \ 't': ['BTags', 'buffer-tags'],
+    \ 'T': ['Tags', 'project-tags'],
+    \ 'r': ['Rg', 'rg'],
+    \ 'w': ['Windows', 'window'],
+    \ 's': ['AnyJump', 'anyjump'],
+    \ 'S': ['Snippets', 'snippets'],
+    \ 'y': ['Yank()', 'yank']
+  \ }
+let g:which_key_map['t'] = {
+    \ 'name': '+toggle',
+    \ 'f': ['NERDTreeToggle', 'filetree'],
+    \ 't': ['TagbarToggle', 'tagbar'],
+    \ 'i' : ['IndentGuidesToggle'                 , 'indent-guide']           ,
+    \ 'p' : ['setlocal paste!'                    , 'paste-mode']             ,
+    \ 'g': ['GitGutterToggle()', 'git-gutter']
+  \ }
+" let g:which_key_map['l'] = {
+"       \ 'name' : '+lsp',
+"       \ 'f' : ['spacevim#lang#util#Format()'          , 'formatting']       ,
+"       \ 'r' : ['spacevim#lang#util#FindReferences()'  , 'references']       ,
+"       \ 'R' : ['spacevim#lang#util#Rename()'          , 'rename']           ,
+"       \ 's' : ['spacevim#lang#util#DocumentSymbol()'  , 'document-symbol']  ,
+"       \ 'S' : ['spacevim#lang#util#WorkspaceSymbol()' , 'workspace-symbol'] ,
+"       \ 'g' : {
+"         \ 'name': '+goto',
+"         \ 'd' : ['spacevim#lang#util#Definition()'     , 'definition']      ,
+"         \ 't' : ['spacevim#lang#util#TypeDefinition()' , 'type-definition'] ,
+"         \ 'i' : ['spacevim#lang#util#Implementation()' , 'implementation']  ,
+"         \ },
+"       \ }
+let g:which_key_map['e'] = {
+    \ 'name': '+errors',
+    \ 'n': ['<Plug>(coc-diagnostic-next)', 'next-error'],
+    \ 'p': ['<Plug>(coc-diagnostic-prev)', 'prev-error'],
+    \ 'e': ['Diagnostics()', 'list-error']
+  \ }
+let g:which_key_map['x'] = {
+      \ 'name' : '+text'           ,
+      \ 'a' : ['<Plug>(EasyAlign)' , 'easy-align']                 ,
+      \ 's' : ['<Plug>(easymotion-s2)', 'easymotion-s2'],
+      \ 't' : ['<Plug>(easymotion-t2)', 'easymotion-t2']
+      \ }
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual ','<CR>
+
+"分屏移动按键映射
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 "Zoom
 function! Zoom ()
@@ -38,65 +124,24 @@ function! Zoom ()
        tab split
     endif
 endfunction
-nmap <leader>z :call Zoom()<CR>
 
-"Anyjump
-nnoremap <silent> <leader>jj :AnyJump <CR>
-xnoremap <silent> <leader>jj :AnyJumpVisual <CR>
-nnoremap <silent> <leader>jb :AnyJumpBack <CR>
-nnoremap <silent> <leader>jl :AnyJumpListResults <CR>
+"Yank seach
+function! Yank ()
+    execute 'CocList -A --normal yank'
+endfunction
 
-"nerdtree
-nmap <leader>e :NERDTreeToggle<CR>
+" Coc Diagnostics
+function! Diagnostics ()
+    execute 'CocList diagnostics'
+endfunction
 
-"coc-yank
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
+" Coc GitGutterToggle
+function! GitGutterToggle ()
+    execute 'CocCommand git.toggleGutters'
+endfunction
 
 "coc-task
 nnoremap <silent> <LocalLeader>a  :<C-u>CocList tasks<cr>
-
-"coc-translator
-"" popup
-nmap <LocalLeader>tp <Plug>(coc-translator-p)
-vmap <LocalLeader>tp <Plug>(coc-translator-pv)
-"" echo
-nmap <LocalLeader>te <Plug>(coc-translator-e)
-vmap <LocalLeader>te <Plug>(coc-translator-ev)
-""replace
-nmap <LocalLeader>tr <Plug>(coc-translator-r)
-vmap <LocalLeader>tr <Plug>(coc-translator-rv)
-
-"vim-clap
-nmap <leader>cf :Clap files ++finder=rg --ignore --hidden --files<CR>
-nmap <Leader>cc :Clap colors<CR>
-nmap <Leader>cg :Clap grep2 ++query=<cword><CR>
-vmap <Leader>cg :Clap grep2 ++query=@visual<CR>
-nmap <Leader>cm :Clap marks<CR>
-nmap <Leader>cb :Clap buffers<CR>
-nmap <Leader>ch :Clap history<CR>
-nmap <Leader>ct :Clap tags<CR>
-nmap <Leader>cj :Clap jumps<CR>
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nmap <Leader>cn :<C-u>DashboardNewFile<CR>
-nnoremap <silent> <Leader>cn :<C-u>DashboardNewFile<CR>
-
-
-"dashboard
-let g:dashboard_custom_shortcut={
-  \ 'last_session'       : 'SPC s l',
-  \ 'find_history'       : 'SPC c h',
-  \ 'find_file'          : 'SPC c f',
-  \ 'change_colorscheme' : 'SPC c c',
-  \ 'find_word'          : 'SPC c g',
-  \ 'book_marks'         : 'SPC c m',
-  \ 'new_file'           : 'SPC c n',
-  \ }
-
-"tabbar
-" nmap <leader>t :TagbarToggle<CR>
-"vista
-nmap <leader>t :Vista!!<CR>
 
 "vimux
 " Prompt for a command to run
@@ -107,10 +152,6 @@ map <LocalLeader>vl :VimuxRunLastCommand<CR>
 map <LocalLeader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 map <LocalLeader>vz :VimuxZoomRunner<CR>
-
-"whichkey
-nnoremap <leader> :<C-U>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-i)
@@ -123,11 +164,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-"coc-diagnostic
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -143,47 +179,13 @@ endfunction
 " Remap for rename current word
 nmap <Leader>r <Plug>(coc-rename)
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <Leader>a  <Plug>(coc-codeaction-selected)
-nmap <Leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <Leader>ac  <Plug>(coc-codeaction)
-
-" Fix autofix problem of current line
-nmap <Leader>q  <Plug>(coc-fix-current)
-
-" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver
-" nmap <silent> <LocalLeader>d <Plug>(coc-range-select)
-" xmap <silent> <LocalLeader>d <Plug>(coc-range-select)
-
 " CocList
-" Show all diagnostics
-nnoremap <silent> <Leader>d  :<C-u>CocList diagnostics<cr>
 " Manage extensions
 nnoremap <silent> <LocalLeader>m  :<C-u>CocList marketplace<cr>
 " Show commands
 nnoremap <silent> <LocalLeader>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-" nnoremap <silent> <LocalLeader>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-" nnoremap <silent> <LocalLeader>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <Localleader>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <LocalLeader>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <LocalLeader>p  :<C-u>CocListResume<CR>
 nnoremap <silent> <LocalLeader>g  :<C-u>CocList --normal gstatus<CR>
-
-" grep word under cursor
-command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
-
-function! s:GrepArgs(...)
-  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-  return join(list, "\n")
-endfunction
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -220,11 +222,11 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<C-l>\<c-r>=coc#on_enter()\<C-l>"
 
 " coc-snippets use tab and s-tab
-" inoremap <silent><expr> <TAB>
-"      \ pumvisible() ? coc#_select_confirm() :
-"      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-"      \ <SID>check_back_space() ? "\<TAB>" :
-"      \ coc#refresh()
+inoremap <silent><expr> <TAB>
+     \ pumvisible() ? coc#_select_confirm() :
+     \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+     \ <SID>check_back_space() ? "\<TAB>" :
+     \ coc#refresh()
 
-" let g:coc_snippet_next = '<tab>'
-" let g:coc_snippet_prev = '<S-TAB>'
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-TAB>'

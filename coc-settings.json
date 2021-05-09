@@ -25,7 +25,7 @@
     "virtualenv"
   ],
   // git
-  "git.enableGutters": true,
+  "git.enableGutters": false,
   // cSpell
   "cSpell.enabled": true,
   "cSpell.allowCompoundWords": true,
