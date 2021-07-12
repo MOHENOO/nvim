@@ -8,6 +8,16 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
   execute 'packadd packer.nvim'
 end
+-- vim.api.nvim_exec(
+--   [[
+--   augroup Packer
+--     autocmd!
+--     autocmd BufWritePost init.lua PackerCompile
+--   augroup end
+-- ]],
+--   false
+-- )
+
 -- load all plugins
 require "pluginList"
 require "options"
@@ -22,6 +32,7 @@ g.auto_save = true
 
 g.nvchad_theme = "onedark"
 vim.cmd 'colorscheme onedark'
+vim.g.onedark_terminal_italics = 2
 
 require "highlights"
 require "mappings"

@@ -57,6 +57,8 @@ return packer.startup(
             end
         }
 
+        use 'ludovicchabant/vim-gutentags' -- Automatic tags management
+
         use {
             "kabouzeid/nvim-lspinstall",
         }
